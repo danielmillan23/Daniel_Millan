@@ -18,7 +18,7 @@ const Home = () => {
   const [authenticated, setAuthenticated] = React.useState();
   const [users, setUsers] = React.useState();
   const [notes, setNotes] = React.useState();
-  const urlDelApi = "http://localhost:8088/apiDB.php/records";
+  const urlDelApi = "http://10.17.19.22/api.php/records";
   const mockUser = {
     usuario: "admin",
     password: "admin",
@@ -96,7 +96,9 @@ const Home = () => {
       .get(`${urlDelApi}/Notes`)
       .then(function (response) {
         // handle success
+        console.log(response);
         console.log(response.data.records);
+        setNotes(response.data.records);
         setNotes(response.data.records);
       })
       .catch(function (error) {
